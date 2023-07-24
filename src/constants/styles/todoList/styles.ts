@@ -42,12 +42,13 @@ export const TODO_STYLE = StyleSheet.create({
     todoItemInfoContainer: {
         flexDirection: "row",
         justifyContent: "space-between",
-        alignItems: "flex-start",
+        alignItems: "center",
         maxWidth: "75%",
     },
     todoItemText: {
         ...TEXTSTYLES.Body.b1,
         color: COLORS.Neutral.Black,
+        marginHorizontal: ITEM_MARGIN_HORIZONTAL,
     },
     todoItemStatus: {
         height: 25,
@@ -56,8 +57,8 @@ export const TODO_STYLE = StyleSheet.create({
         backgroundColor: COLORS.Primary.Default,
     },
     todoItemTextContainer: {
-        paddingHorizontal: 15,
-        maxWidth: "95%",
+        flex: 1,
+        marginHorizontal: 5,
     },
     removeButton: {
         paddingVertical: 5,
