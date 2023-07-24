@@ -43,6 +43,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
                 onPress={removeOnPress}
                 buttonStyle={TODO_STYLE.removeButton}
                 textStyle={TODO_STYLE.todoItemText}
+                testID="remove_button"
             />
         </TouchableOpacity>
     );
