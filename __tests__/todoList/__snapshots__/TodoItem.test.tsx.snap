@@ -48,9 +48,9 @@ exports[`LandmarkOfferTopHat TodoItem renders correctly 1`] = `
   <View
     style={
       {
-        "alignItems": "center",
+        "alignItems": "flex-start",
         "flexDirection": "row",
-        "justifyContent": "center",
+        "justifyContent": "space-between",
         "maxWidth": "75%",
       }
     }
@@ -68,6 +68,7 @@ exports[`LandmarkOfferTopHat TodoItem renders correctly 1`] = `
     <View
       style={
         {
+          "maxWidth": "95%",
           "paddingHorizontal": 15,
         }
       }

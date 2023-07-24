@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { jest, describe, it, expect, render } from "@jest/globals";
+import { jest, describe, it, expect } from "@jest/globals";
 import TodoItem from "../../src/features/todoList/components/TodoItem";
 
 describe("LandmarkOfferTopHat", () => {
@@ -18,29 +18,6 @@ describe("LandmarkOfferTopHat", () => {
         expect(tree).toMatchSnapshot();
     });
 
-    it("TodoItem renders with a long label correctly", () => {
-        const item = {
-            id: "1",
-            label: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        };
-        const component = renderer.create(
-            <TodoItem
-                item={item}
-                editCallback={() => {}}
-                removeCallback={() => {}}
-            />
-        );
-
-        // the end of the label is rendered
-        const labelText = component.root.findByProps({
-            testID: "label_text",
-        });
-        console.log("labelText: ", labelText.props);
-        // const labelText = getByText(/laborum/i);
-
-        // expect(labelText).toBeTruthy();
-    });
-
     it("Edit callback is called when TodoItem is pressed", () => {
         const item = { id: "unique_id_1", label: "Test Todo" };
         const editCallbackMock = jest.fn();
@@ -55,6 +32,31 @@ describe("LandmarkOfferTopHat", () => {
 
         todoItem.props.onPress();
         expect(editCallbackMock).toHaveBeenCalledWith("unique_id_1");
+    });
+
+    it('Renders the "REMOVE" button correctly with a long label', () => {
+        const removeCallbackMock = jest.fn();
+        const item = {
+            id: "unique_id_1",
+            label: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        };
+
+        const component = renderer.create(
+            <TodoItem
+                item={item}
+                editCallback={() => {}}
+                removeCallback={removeCallbackMock}
+            />
+        );
+
+        const renderedButtonComponent = component.root.findByProps({
+            testID: "remove_button",
+        });
+
+        const renderedButtonText =
+            renderedButtonComponent.props.children.props.children;
+
+        expect(renderedButtonText).toBe("REMOVE");
     });
 
     it('Remove callback is called when "REMOVE" button is pressed', () => {
