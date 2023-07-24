@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LandmarkOfferTopHat TodoItem renders correctly 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#FFFFFF",
+      "borderRadius": 20,
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "marginBottom": 15,
+      "marginHorizontal": 10,
+      "opacity": 1,
+      "paddingHorizontal": 20,
+      "paddingVertical": 20,
+    }
+  }
+  testID="todo_item"
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "maxWidth": "75%",
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "backgroundColor": "#305ABB",
+          "borderRadius": 25,
+          "height": 25,
+          "width": 25,
+        }
+      }
+    />
+    <View
+      style={
+        {
+          "paddingHorizontal": 15,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#222222",
+            "fontSize": 16,
+          }
+        }
+        testID="label_text"
+      >
+        Test Todo
+      </Text>
+    </View>
+  </View>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "opacity": 1,
+        "paddingHorizontal": 5,
+        "paddingVertical": 5,
+      }
+    }
+    testID="remove_button"
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        {
+          "color": "#222222",
+          "fontSize": 16,
+        }
+      }
+    >
+      REMOVE
+    </Text>
+  </View>
+</View>
+`;

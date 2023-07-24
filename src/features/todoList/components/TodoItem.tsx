@@ -27,16 +27,20 @@ const TodoItem: React.FC<TodoItemProps> = ({
             key={item.id}
             onPress={editOnPress}
             style={TODO_STYLE.todoItemContainer}
+            testID="todo_item"
         >
             <View style={TODO_STYLE.todoItemInfoContainer}>
                 <View style={TODO_STYLE.todoItemStatus} />
                 <View style={TODO_STYLE.todoItemTextContainer}>
-                    <Text style={TODO_STYLE.todoItemText}>{item.label}</Text>
+                    <Text style={TODO_STYLE.todoItemText} testID="label_text">
+                        {item.label}
+                    </Text>
                 </View>
             </View>
             <TouchableOpacity
                 onPress={removeOnPress}
                 style={TODO_STYLE.removeButton}
+                testID="remove_button"
             >
                 <Text numberOfLines={1} style={TODO_STYLE.todoItemText}>
                     REMOVE
