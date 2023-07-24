@@ -55,7 +55,8 @@ const localAuthTrigger = async () => {
  * @throws {Error} If there is an error while performing local authentication.
  */
 const localAuthInit = async (
-    authCallback: React.Dispatch<React.SetStateAction<boolean>>
+    authCallback: React.Dispatch<React.SetStateAction<boolean>>,
+    notSecuredCallback: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
     try {
         const isSupported = await localAuthSupported();
@@ -69,7 +70,7 @@ const localAuthInit = async (
             }
             // @ts-ignore
             if (results.warning && Platform.OS == "android") {
-                Linking.sendIntent("android.settings.SECURITY_SETTINGS");
+                notSecuredCallback(true);
                 return;
             }
         }

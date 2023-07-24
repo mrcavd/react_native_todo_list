@@ -1,5 +1,5 @@
-import React from "react";
-import { Text, View } from "react-native";
+import React, { useState } from "react";
+import { Linking, Text, View } from "react-native";
 import { AUTH_STYLE, TEXTSTYLES } from "../../constants";
 import { localAuthInit } from "../../helpers";
 import ActionButton from "../universal/ActionButton";
@@ -9,15 +9,32 @@ interface AuthenticationProps {
 }
 
 const Authentication: React.FC<AuthenticationProps> = ({ authCallback }) => {
+    const [isNotSecured, setIsNotSecured] = useState(false);
+
     const authenticationOnPress = async () => {
-        await localAuthInit(authCallback);
+        if (isNotSecured) {
+            Linking.sendIntent("android.settings.SECURITY_SETTINGS");
+            setIsNotSecured(false);
+            return;
+        }
+        await localAuthInit(authCallback, setIsNotSecured);
+    };
+
+    const actionButtonText = () => {
+        return isNotSecured ? "Settings" : "Authenticate";
+    };
+
+    const descText = () => {
+        return isNotSecured
+            ? "Set Authentication to Proceed"
+            : "Authenticate Home";
     };
 
     return (
         <View style={AUTH_STYLE.container}>
-            <Text style={TEXTSTYLES.Headline.h3}>Authentication Home</Text>
+            <Text style={TEXTSTYLES.Headline.h3}>{descText()}</Text>
             <ActionButton
-                label="Authenticate"
+                label={actionButtonText()}
                 onPress={authenticationOnPress}
             />
         </View>
