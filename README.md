@@ -1,8 +1,39 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Demo Explained
+
+This is a simple demo of a TODO List Manager, showcasing how to use expo-local-authentication to implement a basic user authentication flow. The app allows users to manage their TODO items, and the state of TODO items is managed in-page using the React useState Hook.
+
+## Limitations:
+
+**Navigator:**  
+- The app is a single-screen demo without the use of a navigator. It's designed that way to keep the demo lightweight while showcasing the possibilities of a state management system via the useState Hook.
+
+**Local Storage:** 
+- Local storage capability is required for a functional TODO List Manager app. However, it is not implemented in this demo to keep it lightweight. The TODO list data should be written into the device's local storage to support data persistence and ensure the user's data is retained between sessions.
+
+**Redux:** 
+- Redux is omitted to keep the demo lightweight. If navigators are included to expand on the TODO item's management and create multiple pages, then Redux will be required to facilitate cross-page state management. This will ensure that the state is maintained consistently across different pages of the app.
+
+## Features:
+
+**User Authentication:** 
+- The app utilizes expo-local-authentication to enable user authentication, ensuring that only authorized users can access and manage their TODO items.  
+
+**TODO List Management:** 
+- Users can create, edit, and remove their TODO items. The state of TODO items is managed within the current session using the useState Hook, providing a responsive and efficient user experience.
+
+## Dependencies:
+
+**expo-local-authentication:** 
+- This package is used for implementing the local authentication feature, allowing users to securely log in to the TODO List Manager.  
+
+**React Hooks:** 
+- The app leverages React useState Hook to manage the state of TODO items within the component, avoiding the need for a backend or external data storage for this simple demo.
+
+Please note that this is a basic demo and does not include advanced features like data persistence or user authentication beyond the session level. It serves as an example of how to build a simple TODO List Manager with basic user authentication using Expo and React Hooks. Developers can expand and enhance this demo to add more functionality and integrate with backend services for a complete application.
 
 # Getting Started
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+> **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
 ## Step 1: Start the Metro Server
 
@@ -45,35 +76,3 @@ yarn ios
 If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
 
 This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
