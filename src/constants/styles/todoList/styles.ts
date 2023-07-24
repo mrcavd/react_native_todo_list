@@ -41,8 +41,8 @@ export const TODO_STYLE = StyleSheet.create({
     },
     todoItemInfoContainer: {
         flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: "space-between",
+        alignItems: "flex-start",
         maxWidth: "75%",
     },
     todoItemText: {
@@ -57,6 +57,7 @@ export const TODO_STYLE = StyleSheet.create({
     },
     todoItemTextContainer: {
         paddingHorizontal: 15,
+        maxWidth: "95%",
     },
     removeButton: {
         paddingVertical: 5,
