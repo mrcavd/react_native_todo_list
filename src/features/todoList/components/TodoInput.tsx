@@ -31,7 +31,9 @@ const TodoInput: React.FC<TodoInputProps> = ({
 
     const resetTargetItem = () => {
         resetCallback(undefined);
-        setValue("");
+        if (item) {
+            setValue("");
+        }
     };
 
     const textValueOnChange = (value: string) => {
@@ -55,6 +57,7 @@ const TodoInput: React.FC<TodoInputProps> = ({
                     style={TODO_STYLE.todoInputStyle}
                     onChangeText={textValueOnChange}
                     onBlur={resetTargetItem}
+                    maxLength={500}
                 />
                 <ActionButton
                     label={buttonLabelSwitch()}
