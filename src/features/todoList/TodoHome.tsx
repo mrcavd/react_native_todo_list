@@ -34,22 +34,33 @@ const TodoHome = () => {
 
     const confirmButtonOnPressSwitch = (id: string, label: string) => {
         if (!label) return;
-        if (editItem) {
-            updateItemById(todoItems, id, label, setTodoItems);
-        } else {
-            addNewItem(todoItems, label, setTodoItems);
+        try {
+            if (editItem) {
+                updateItemById(todoItems, id, label, setTodoItems);
+            } else {
+                addNewItem(todoItems, label, setTodoItems);
+            }
+        } catch (error) {
+            // notify the user of the failure
         }
     };
 
     const editOnPress = (id: string) => {
         if (!id) return;
-
-        selectItemById(todoItems, id, setEditItem);
+        try {
+            selectItemById(todoItems, id, setEditItem);
+        } catch (error) {
+            // notify the user of the failure
+        }
     };
 
     const removeOnPress = (id: string) => {
         if (!id) return;
-        removeItemById(todoItems, id, setTodoItems);
+        try {
+            removeItemById(todoItems, id, setTodoItems);
+        } catch (error) {
+            // notify the user of the failure
+        }
     };
 
     const renderTodoItems: ListRenderItem<TodoItemType> = ({ item }) => {
