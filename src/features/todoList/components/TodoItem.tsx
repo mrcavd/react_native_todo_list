@@ -2,6 +2,7 @@ import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { TODO_STYLE } from "../../../constants";
 import { TodoItemType } from "../../../types";
+import { ActionButton } from "../../universal";
 
 interface TodoItemProps {
     item: TodoItemType;
@@ -37,15 +38,12 @@ const TodoItem: React.FC<TodoItemProps> = ({
                     </Text>
                 </View>
             </View>
-            <TouchableOpacity
+            <ActionButton
+                label={"REMOVE"}
                 onPress={removeOnPress}
-                style={TODO_STYLE.removeButton}
-                testID="remove_button"
-            >
-                <Text numberOfLines={1} style={TODO_STYLE.todoItemText}>
-                    REMOVE
-                </Text>
-            </TouchableOpacity>
+                buttonStyle={TODO_STYLE.removeButton}
+                textStyle={TODO_STYLE.todoItemText}
+            />
         </TouchableOpacity>
     );
 };
