@@ -44,8 +44,13 @@ const removeItemById = (
     updateCallback: React.Dispatch<React.SetStateAction<TodoItemType[]>>
 ) => {
     const map = new Map(todoItems.map((item) => [item.id, item]));
-    map.delete(id);
-    updateCallback(Array.from(map.values()));
+    const target = map.get(id);
+    if (target) {
+        map.delete(id);
+        updateCallback(Array.from(map.values()));
+    } else {
+        // TODO: error callback
+    }
 };
 
 export { addNewItem, selectItemById, updateItemById, removeItemById };
