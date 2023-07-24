@@ -48,7 +48,7 @@ exports[`LandmarkOfferTopHat TodoItem renders correctly 1`] = `
   <View
     style={
       {
-        "alignItems": "flex-start",
+        "alignItems": "center",
         "flexDirection": "row",
         "justifyContent": "space-between",
         "maxWidth": "75%",
@@ -68,8 +68,8 @@ exports[`LandmarkOfferTopHat TodoItem renders correctly 1`] = `
     <View
       style={
         {
-          "maxWidth": "95%",
-          "paddingHorizontal": 15,
+          "flex": 1,
+          "marginHorizontal": 5,
         }
       }
     >
@@ -78,6 +78,7 @@ exports[`LandmarkOfferTopHat TodoItem renders correctly 1`] = `
           {
             "color": "#222222",
             "fontSize": 16,
+            "marginHorizontal": 10,
           }
         }
         testID="label_text"
@@ -124,11 +125,11 @@ exports[`LandmarkOfferTopHat TodoItem renders correctly 1`] = `
     testID="remove_button"
   >
     <Text
-      numberOfLines={1}
       style={
         {
           "color": "#222222",
           "fontSize": 16,
+          "marginHorizontal": 10,
         }
       }
     >

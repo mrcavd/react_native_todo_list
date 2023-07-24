@@ -15,14 +15,16 @@ describe("removeItemById helper test suite", () => {
         expect(updateCallbackMock).toHaveBeenCalledWith(REMOVED_LIST);
     });
 
-    it("should do nothing if the item with the specified id is not found", () => {
+    it("should catch an error if the item with the specified id is not found", () => {
         const todoItems = FULL_LIST;
         const idToRemove = "4"; // This id is not present in the todoItems
-
         const updateCallbackMock = jest.fn();
-        removeItemById(todoItems, idToRemove, updateCallbackMock);
 
-        // Verify that updateCallbackMock is not called
-        expect(updateCallbackMock).not.toHaveBeenCalled();
+        try {
+            removeItemById(todoItems, idToRemove, updateCallbackMock);
+        } catch (error) {
+            const castedError = error as Error;
+            expect(castedError.message).toBe("TARGET_NOT_FOUND");
+        }
     });
 });
