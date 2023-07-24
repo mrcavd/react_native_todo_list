@@ -6,3 +6,4 @@ export const BUTTON_MAX_HEIGHT = 100;
 export const BUTTON_MAX_WIDTH = "85%";
 export const HORIZONTOAL_MARGIN = 10;
 export const VERTICAL_MARGIN = 10;
+export const LIST_FOOTER_PADDING = 150;

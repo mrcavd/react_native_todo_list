@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { FlatList, ListRenderItem, Text, View } from "react-native";
+import React, { useState } from "react";
+import { FlatList, ListRenderItem, View } from "react-native";
 import { TODO_STYLE } from "../../constants";
 import { Authentication } from "../authentication";
 import { TodoHeader, TodoInput, TodoItem } from "./components";
@@ -10,6 +10,7 @@ import {
     updateItemById,
     addNewItem,
 } from "../../helpers";
+import { ListFooterPadding } from "../universal";
 
 const tempData: TodoItemType[] = [
     {
@@ -41,10 +42,13 @@ const TodoHome = () => {
     };
 
     const editOnPress = (id: string) => {
+        if (!id) return;
+
         selectItemById(todoItems, id, setEditItem);
     };
 
     const removeOnPress = (id: string) => {
+        if (!id) return;
         removeItemById(todoItems, id, setTodoItems);
     };
 
@@ -65,6 +69,7 @@ const TodoHome = () => {
                 data={todoItems}
                 keyExtractor={(item) => item.id}
                 renderItem={renderTodoItems}
+                ListFooterComponent={<ListFooterPadding />}
             />
             <TodoInput
                 item={editItem}
