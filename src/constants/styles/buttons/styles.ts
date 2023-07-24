@@ -1,14 +1,13 @@
 import { StyleSheet } from "react-native";
+import { COLORS, TEXTSTYLES } from "../theme";
 import {
-    COLORS,
-    TEXTSTYLES,
     BUTTON_MAX_HEIGHT,
     BUTTON_MAX_WIDTH,
     BUTTON_MIN_WIDTH,
     BUTTON_MARGIN_VERTICAL,
     BUTTON_PADDING_HORIZONTAL,
     BUTTON_PADDING_VERTICAL,
-} from "../../styles";
+} from "../../styles/universal";
 
 export const BUTTON_STYLE = StyleSheet.create({
     actionButtonContainer: {
