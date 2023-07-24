@@ -22,6 +22,7 @@ const TodoInput: React.FC<TodoInputProps> = ({
 
     const onPress = () => {
         updateCallback(item?.id || "", value);
+        setValue("");
         textInputRef.current?.blur();
     };
 
