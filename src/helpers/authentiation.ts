@@ -1,5 +1,5 @@
 import * as LocalAuthentication from "expo-local-authentication";
-import { Linking, Platform } from "react-native";
+import { Platform } from "react-native";
 
 /**
  * Checks if local authentication (e.g., fingerprint or face recognition) is supported on the device.
@@ -10,7 +10,7 @@ import { Linking, Platform } from "react-native";
  *
  * @throws {Error} If there is an error while checking for hardware support.
  */
-const localAuthSupported = async () => {
+const localAuthSupported = async (): Promise<boolean> => {
     return await LocalAuthentication.hasHardwareAsync();
 };
 
@@ -23,7 +23,7 @@ const localAuthSupported = async () => {
  *
  * @throws {Error} If there is an error while checking for local authentication enrollment.
  */
-const localAuthEnrolled = async () => {
+const localAuthEnrolled = async (): Promise<boolean> => {
     return await LocalAuthentication.isEnrolledAsync();
 };
 
@@ -36,7 +36,7 @@ const localAuthEnrolled = async () => {
  *
  * @throws {Error} If there is an error while performing local authentication or if the user cancels the authentication process.
  */
-const localAuthTrigger = async () => {
+const localAuthTrigger = async (): Promise<LocalAuthentication.LocalAuthenticationResult> => {
     const options: LocalAuthentication.LocalAuthenticationOptions = {
         promptMessage: "Please enable local authentication",
     };
@@ -57,7 +57,7 @@ const localAuthTrigger = async () => {
 const localAuthInit = async (
     authCallback: React.Dispatch<React.SetStateAction<boolean>>,
     notSecuredCallback: React.Dispatch<React.SetStateAction<boolean>>
-) => {
+): Promise<void> => {
     try {
         const isSupported = await localAuthSupported();
         const isEnrolled = await localAuthEnrolled();
