@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { KeyboardAvoidingView, TextInput, View } from "react-native";
-import { TODO_STYLE } from "../../../constants";
+import {
+    KeyboardAvoidingView,
+    Platform,
+    TextInput,
+    View,
+    ViewProps,
+} from "react-native";
+import { COLORS, TODO_STYLE } from "../../../constants";
 import { TodoItemType } from "../../../types";
 import { ActionButton } from "../../universal";
 
@@ -19,6 +25,7 @@ const TodoInput: React.FC<TodoInputProps> = ({
 }) => {
     const textInputRef = React.createRef<TextInput>();
     const [value, setValue] = useState("");
+    const [isFocus, setIsFocus] = useState(false);
 
     const onPress = () => {
         updateCallback(item?.id || "", value);
@@ -30,8 +37,13 @@ const TodoInput: React.FC<TodoInputProps> = ({
         return item ? "UPDATE" : "ADD";
     };
 
+    const setFocusState = () => {
+        setIsFocus(true);
+    };
+
     const resetTargetItem = () => {
         resetCallback(undefined);
+        setIsFocus(false);
         if (item) {
             setValue("");
         }
@@ -39,6 +51,16 @@ const TodoInput: React.FC<TodoInputProps> = ({
 
     const textValueOnChange = (value: string) => {
         setValue(value);
+    };
+
+    const keyboardAvoidingViewBehavior = () => {
+        return Platform.OS == "ios" ? "padding" : undefined;
+    };
+
+    const bottomPadding = () => {
+        return {
+            paddingBottom: isFocus && Platform.OS == "ios" ? 60 : 0,
+        } as ViewProps["style"];
     };
 
     useEffect(() => {
@@ -49,14 +71,19 @@ const TodoInput: React.FC<TodoInputProps> = ({
     }, [item]);
 
     return (
-        <KeyboardAvoidingView style={TODO_STYLE.todoInput}>
+        <KeyboardAvoidingView
+            behavior={keyboardAvoidingViewBehavior()}
+            style={TODO_STYLE.todoInput}
+        >
             <View style={TODO_STYLE.todoInputContainer}>
                 <TextInput
                     ref={textInputRef}
                     placeholder="Enter here"
                     value={value}
                     style={TODO_STYLE.todoInputStyle}
+                    placeholderTextColor={COLORS.Neutral.Grey}
                     onChangeText={textValueOnChange}
+                    onFocus={setFocusState}
                     onBlur={resetTargetItem}
                     maxLength={500}
                 />
@@ -67,6 +94,7 @@ const TodoInput: React.FC<TodoInputProps> = ({
                     textStyle={TODO_STYLE.todoInputConfirmText}
                 />
             </View>
+            <View style={bottomPadding()} />
         </KeyboardAvoidingView>
     );
 };
