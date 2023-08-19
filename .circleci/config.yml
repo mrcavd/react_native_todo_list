@@ -22,5 +22,5 @@ jobs:
         # - store_artifacts:
         #     path: ./test-results/results.xml
         - store_test_results:
-            path: junit
+            path: ./junit.xml
 
