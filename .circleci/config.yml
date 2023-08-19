@@ -1,20 +1,23 @@
 # This config is equivalent to both the '.circleci/extended/orb-free.yml' and the base '.circleci/config.yml'
 version: 2.1
-jobs:
-    build:
-        working_directory: ~/repo
-        docker:
-            - image: cimg/node:18.10.0
-        steps:
-            - checkout
-            - restore_cache:
-                  key: dependency-cache-{{ checksum "yarn.lock" }}
-            - run:
-                  name: Install Dependencies
-                  command: yarn install
-            - run:
-                  name: Run tests
-                  command: yarn test
+basic_unit_tests:
+    jobs:
+        build:
+            working_directory: ~/repo
+            docker:
+                - image: cimg/node:18.10.0
+            steps:
+                - checkout
+                - restore_cache:
+                      key: dependency-cache-{{ checksum "yarn.lock" }}
+                - run:
+                      name: Install Dependencies
+                      command: yarn install
+                - run:
+                      name: Run yarn tests
+                      command: yarn test
+                - store_test_results:
+                      path: test-results
 # Orbs are reusable packages of CircleCI configuration that you may share across projects, enabling you to create encapsulated, parameterized commands, jobs, and executors that can be used across multiple projects.
 # See: https://circleci.com/docs/orb-intro/
 # orbs:
