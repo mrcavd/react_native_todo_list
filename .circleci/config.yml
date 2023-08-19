@@ -1,20 +1,27 @@
 # This config is equivalent to both the '.circleci/extended/orb-free.yml' and the base '.circleci/config.yml'
 version: 2.1
 jobs:
-    build:
-        working_directory: ~/repo
-        docker:
-            - image: cimg/node:18.10.0
-        steps:
-            - checkout
-            - restore_cache:
-                  key: dependency-cache-{{ checksum "yarn.lock" }}
-            - run:
-                  name: Install Dependencies
-                  command: yarn install
-            - run:
-                  name: Run tests
-                  command: yarn test
-            - store_test_results:
-                  path: ./test_results/jest
+  build:
+    working_directory: ~/repo
+    docker:
+        - image: cimg/node:18.10.0
+    steps:
+        - checkout
+        - restore_cache:
+            key: dependency-cache-{{ checksum "yarn.lock" }}
+        - run:
+            name: Install Dependencies
+            command: yarn install
+    
+  test:
+    working_directory: ~/repo
+    docker:
+      - image: cimg/node:18.10.0
+    steps:
+      - checkout
+      - run:
+            name: Run tests
+            command: yarn test
+      - store_test_results:
+            path: ./test_results/jest
 
