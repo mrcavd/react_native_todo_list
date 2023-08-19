@@ -8,14 +8,14 @@ jobs:
     steps:
         - checkout
         - restore_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
+            key: dependency-cache-{{ checksum "yarn.lock" }}
         - run:
-          name: Install Dependencies
-          command: yarn install
+            name: Install Dependencies
+            command: yarn install
         - run:
-          name: Make test-results directories
-          command: |
-            mkdir -p /test-results/
+            name: Make test-results directories
+            command: |
+              mkdir -p /test-results/
         - run:
             name: Run tests
             command: yarn test
