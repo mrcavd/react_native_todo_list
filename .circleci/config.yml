@@ -12,15 +12,15 @@ jobs:
         - run:
             name: Install Dependencies
             command: yarn install
-        - run:
-            name: Make test-results directories
-            command: |
-              mkdir -p ./test-results/
+        # - run:
+        #     name: Make test-results directories
+        #     command: |
+        #       mkdir -p ./test-results/
         - run:
             name: Run tests
-            command: yarn test --json --outputFile=./test-results/results.xml
+            command: yarn test
         # - store_artifacts:
         #     path: ./test-results/results.xml
         - store_test_results:
-            path: ./test-results
+            path: junit
 
