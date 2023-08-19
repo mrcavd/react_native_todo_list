@@ -16,5 +16,5 @@ jobs:
             name: Run tests
             command: yarn test
         - store_test_results:
-            path: ./test_results/jest
+            path: ./reports/junit
 
