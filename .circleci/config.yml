@@ -15,12 +15,12 @@ jobs:
         - run:
             name: Make test-results directories
             command: |
-              mkdir -p /test-results/
+              mkdir -p ./test-results/
         - run:
             name: Run tests
             command: yarn test
         - store_artifacts:
-            path: /test-results/results.xml
+            path: ./test-results/results.xml
         - store_test_results:
-            path: /test-results
+            path: ./test-results
 
